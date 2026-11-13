@@ -33,6 +33,7 @@ public class ItemService {
             existing.setName(updated.getName());
             existing.setDescription(updated.getDescription());
             existing.setPrice(updated.getPrice());
+            existing.setQuantity(updated.getQuantity());
             return itemRepository.save(existing);
         });
     }
