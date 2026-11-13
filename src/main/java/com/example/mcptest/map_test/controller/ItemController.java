@@ -2,6 +2,7 @@ package com.example.mcptest.map_test.controller;
 
 import com.example.mcptest.map_test.entity.Item;
 import com.example.mcptest.map_test.service.ItemService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,7 @@ public class ItemController {
 
     // CREATE
     @PostMapping
-    public ResponseEntity<Item> create(@RequestBody Item item) {
+    public ResponseEntity<Item> create(@Valid @RequestBody Item item) {
         return ResponseEntity.status(HttpStatus.CREATED).body(itemService.create(item));
     }
 
@@ -40,7 +41,7 @@ public class ItemController {
 
     // UPDATE
     @PutMapping("/{id}")
-    public ResponseEntity<Item> update(@PathVariable Long id, @RequestBody Item item) {
+    public ResponseEntity<Item> update(@PathVariable Long id, @Valid @RequestBody Item item) {
         return itemService.update(id, item)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());

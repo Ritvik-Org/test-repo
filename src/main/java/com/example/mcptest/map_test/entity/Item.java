@@ -1,6 +1,7 @@
 package com.example.mcptest.map_test.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "items")
@@ -17,12 +18,17 @@ public class Item {
 
     private Double price;
 
+    @NotNull
+    @Column(nullable = false, columnDefinition = "integer default 5")
+    private Integer quantity;
+
     public Item() {}
 
-    public Item(String name, String description, Double price) {
+    public Item(String name, String description, Double price, Integer quantity) {
         this.name = name;
         this.description = description;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public Long getId() { return id; }
@@ -36,4 +42,7 @@ public class Item {
 
     public Double getPrice() { return price; }
     public void setPrice(Double price) { this.price = price; }
+
+    public Integer getQuantity() { return quantity; }
+    public void setQuantity(Integer quantity) { this.quantity = quantity; }
 }
