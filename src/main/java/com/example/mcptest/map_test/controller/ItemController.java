@@ -7,9 +7,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 @RestController
 @RequestMapping("/api/items")
+@CrossOrigin(origins = "https://trusted.example.com")
 public class ItemController {
 
     private final ItemService itemService;
